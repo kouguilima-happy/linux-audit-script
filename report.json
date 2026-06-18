@@ -2,17 +2,18 @@
     "hostname": "DESKTOP-R4II12C",
     "user": "happy",
     "system": "Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-glibc2.35",
-    "disk": {
-        "total_gb": 250,
-        "used_gb": 2,
-        "free_gb": 236
+    "metrics": {
+        "disk_used_percent": 0.83,
+        "ram_used_percent": 4.8,
+        "cpu_cores": 4
     },
-    "cpu": {
-        "cores": 4
-    },
-    "ram": {
-        "total_gb": 6,
-        "used_gb": 0,
-        "available_gb": 5
+    "security_audit": {
+        "score": 100,
+        "summary": "SECURE",
+        "details": [
+            "[OK] Script executed as standard user.",
+            "[OK] Disk usage is safe (0.8%).",
+            "[OK] RAM utilization is safe (4.8%)."
+        ]
     }
 }
