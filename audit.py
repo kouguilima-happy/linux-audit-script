@@ -1,47 +1,34 @@
-
 import os
 import platform
 import shutil
 import psutil
-
-print("=== Linux Audit Report ===")
-
-print("\nHostname:")
-print(platform.node())
-
-print("\nCurrent User:")
-print(os.getenv("USER"))
-
-print("\nSystem:")
-print(platform.platform())
+import json
 
 total, used, free = shutil.disk_usage("/")
-
-print("\nDisk Usage:")
-print(f"Total: {total // (2**30)} GB")
-print(f"Used : {used // (2**30)} GB")
-print(f"Free : {free // (2**30)} GB")
-
-print("\nCPU Cores:")
-print(psutil.cpu_count())
-
 ram = psutil.virtual_memory()
 
-print("\nRAM:")
-print(f"Total: {ram.total // (1024**3)} GB")
-print(f"Used : {ram.used // (1024**3)} GB")
-print(f"Available : {ram.available // (1024**3)} GB")
+report = {
+    "hostname": platform.node(),
+    "user": os.getenv("USER"),
+    "system": platform.platform(),
+    "disk": {
+        "total_gb": total // (2**30),
+        "used_gb": used // (2**30),
+        "free_gb": free // (2**30)
+    },
+    "cpu": {
+        "cores": psutil.cpu_count()
+    },
+    "ram": {
+        "total_gb": ram.total // (1024**3),
+        "used_gb": ram.used // (1024**3),
+        "available_gb": ram.available // (1024**3)
+    }
+}
 
+print(json.dumps(report, indent=4))
 
+with open("report.json", "w") as f:
+    json.dump(report, f, indent=4)
 
-import subprocess
-
-print("\nOpen Ports:")
-
-result = subprocess.run(
-    ["ss", "-tuln"],
-    capture_output=True,
-    text=True
-)
-
-print(result.stdout)
+print("\nReport saved to report.json")

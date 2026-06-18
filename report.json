@@ -1,0 +1,18 @@
+{
+    "hostname": "DESKTOP-R4II12C",
+    "user": "happy",
+    "system": "Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+    "disk": {
+        "total_gb": 250,
+        "used_gb": 2,
+        "free_gb": 236
+    },
+    "cpu": {
+        "cores": 4
+    },
+    "ram": {
+        "total_gb": 6,
+        "used_gb": 0,
+        "available_gb": 5
+    }
+}
