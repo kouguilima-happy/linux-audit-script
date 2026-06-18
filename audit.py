@@ -31,3 +31,17 @@ print("\nRAM:")
 print(f"Total: {ram.total // (1024**3)} GB")
 print(f"Used : {ram.used // (1024**3)} GB")
 print(f"Available : {ram.available // (1024**3)} GB")
+
+
+
+import subprocess
+
+print("\nOpen Ports:")
+
+result = subprocess.run(
+    ["ss", "-tuln"],
+    capture_output=True,
+    text=True
+)
+
+print(result.stdout)
