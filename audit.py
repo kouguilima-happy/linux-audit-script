@@ -35,7 +35,7 @@ if ram.percent > 90:
 else:
     findings.append("[OK] RAM usage is safe")
 
-# 3. Création du dictionnaire de rapport
+# 3. Création du dictionnaire de rapport JSON
 report = {
     "hostname": platform.node(),
     "user": current_user,
@@ -52,7 +52,7 @@ report = {
     }
 }
 
-# 4. Affichage et sauvegarde
+# 4. Affichage dans le terminal et sauvegarde dans le fichier
 print(json.dumps(report, indent=4))
 
 with open("report.json", "w") as f:
